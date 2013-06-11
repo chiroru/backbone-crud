@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>backbone crud</title>
+  </head>
+  <body>
+    <div id="crudView">
+      <h1>backbone crud</h1>
+      <hr />
+      <a href="#">regist</a>
+      <div id="registView">
+        <h2>regist</h2>
+        <span>name</span><input type="text id="name">
+        <button id="regist">regist</button>
+      </div>
+      <div id="listView">
+        <table>
+          <thead>
+            <tr>
+              <th>update</th>
+              <th>remote</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">update</a></td>
+              <td><a href="#">remote</a></td>
+              <td>name a</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="src/lib/jquery/jquery.js"></script>
+  <script type="text/javascript" src="src/lib/underscore/underscore.js"></script>
+  <script type="text/javascript" src="src/lib/json2/json2.js"></script>
+  <script type="text/javascript" src="src/lib/backbone/backbone.js"></script>
+  <script type="text/javascript" src="src/lib/backbone.localStorage/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="src/crud.js"></script>
+</html>

@@ -1,0 +1,47 @@
+{
+  "name": "backbone-crud",
+  "description": "This is sample crud application with backbone.js",
+  "version": "0.0.1-dev",
+  "homepage": "http://github.com/chiroru/backbone-crud",
+  "author": {
+    "name": "chiroru",
+    "email": "chiroru_0130@yahoo.co.jp",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chiroru/backbone-crud"
+  },
+  "bugs": {
+    "url": "https://github.com/chiroru/backbone-crud/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "preferGlobal": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bower-task": "0.2.3",
+    "phantomjs" : "1.9.0-4",
+    "grunt-contrib-jshint": "~0.3.0",
+    "grunt-contrib-connect": "0.3.0",
+    "grunt-contrib-livereload": "0.1.2",
+    "grunt-regarde": "0.1.1",
+    "grunt-contrib-qunit": "0.2.1",
+    "grunt-jsdoc": "0.3.3"
+  },
+  "keywords": [
+  ],
+  "engines": {
+    "node": ">= 0.11.2"
+  },
+  "main": "src/",
+  "scripts": {
+    "test": "grunt qunit"
+  }
+}
