@@ -3,41 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <title>backbone crud</title>
+    <link rel="stylesheet" href="src/lib/bootstrap/bootstrap.css">
   </head>
   <body>
-    <div id="crudView">
-      <h1>backbone crud</h1>
-      <hr />
-      <a href="#">regist</a>
-      <div id="registView">
-        <h2>regist</h2>
-        <span>name</span><input type="text id="name">
-        <button id="regist">regist</button>
-      </div>
-      <div id="listView">
-        <table>
-          <thead>
-            <tr>
-              <th>update</th>
-              <th>remote</th>
-              <th>name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="#">update</a></td>
-              <td><a href="#">remote</a></td>
-              <td>name a</td>
-            </tr>
-          </tbody>
-        </table>
+    <div id="app" class="container">
+      <div id="crudView">
+        <br />
+        <div class="hero-unit">
+          <h1>backbone crud</h1>
+          <p>BACKBONE.js を利用したCRUDサンプルアプリケーションです。</p>
+        </div>
+        <div id="showRegist" class="btn btn-primary">登録</div>
+        <div id="registView" style="display: none">
+          <hr />
+          <h2>登録</h2>
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label">名前</label>
+              <div class="controls">
+                <input type="text" id="name">
+              </div>
+            </div>
+            <button id="registButton" class="btn btn-primary">登録</button>
+          </form>
+          <hr />
+        </div>
+        <div id="listView">
+          <h2>一覧</h2>
+          <table class="table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>名前</th>
+              </tr>
+            </thead>
+            <tbody id="addressListCon">
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>
+  <script type="text/template" id="addressTemplate">
+                <td><a href="">更新</a></td>
+                <td><a href="">削除</a></td>
+                <td><%- name%></td>
+  </script>
   <script type="text/javascript" src="src/lib/jquery/jquery.js"></script>
   <script type="text/javascript" src="src/lib/underscore/underscore.js"></script>
   <script type="text/javascript" src="src/lib/json2/json2.js"></script>
   <script type="text/javascript" src="src/lib/backbone/backbone.js"></script>
   <script type="text/javascript" src="src/lib/backbone.localStorage/backbone.localStorage.js"></script>
   <script type="text/javascript" src="src/crud.js"></script>
+  <script type="text/javascript" src="src/lib/bootstrap/bootstrap.js"></script>
 </html>
