@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <title>backbone crud</title>
     <link rel="stylesheet" href="src/lib/bootstrap/bootstrap.css">
+    <style>
+      #addressListCon tr.editing td span.view {
+        display: none;
+      }
+
+      #addressListCon tr td input.edit {
+        display: none;
+      }
+
+      #addressListCon tr.editing td input.edit {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div id="app" class="container">
@@ -24,6 +37,12 @@
                 <input type="text" id="name">
               </div>
             </div>
+            <div class="control-group">
+              <label class="control-label">アドレス</label>
+              <div class="controls">
+                <input type="text" id="address">
+              </div>
+            </div>
             <button id="registButton" class="btn btn-primary">登録</button>
           </form>
           <hr />
@@ -37,8 +56,8 @@
             <thead>
               <tr>
                 <th></th>
-                <th></th>
                 <th>名前</th>
+                <th>アドレス</th>
               </tr>
             </thead>
             <tbody id="addressListCon">
@@ -50,8 +69,8 @@
   </body>
   <script type="text/template" id="addressTemplate">
                 <td style="text-align: center;"><input class="toggle" type="checkbox" ></td>
-                <td style="text-align: center;"><a href="">更新</a></td>
-                <td><%- name%></td>
+                <td><span class="view"><%- name%></span><input class="edit" type="text" value="<%-name%>"></td>
+                <td><span class="view"><%- address%></span><input class="edit" type="text" value="<%-address%>"></td>
   </script>
   <script type="text/javascript" src="src/lib/jquery/jquery.js"></script>
   <script type="text/javascript" src="src/lib/underscore/underscore.js"></script>

@@ -2,6 +2,7 @@
   var Address = Backbone.Model.extend({
     defaults: {
       "name": "",
+      "address": "",
       "done": false
     },
     initialize: function() {
@@ -26,7 +27,9 @@
     tagName: "tr",
     template: _.template($('#addressTemplate').html()),
     events: {
-      "click .toggle": "toggleDone"
+      "click .toggle": "toggleDone",
+      "dblclick .view": "edit",
+      "blur .edit": "close"
     },
     initialize: function() {
       this.listenTo(this.model, 'destroy', this.remove);
@@ -38,6 +41,13 @@
     toggleDone: function() {
       console.log('toggleDone');
       this.model.toggle();
+    },
+    edit: function() {
+      this.$el.addClass('editing');
+      this.$('#name-' + this.model.id).focus();
+    },
+    close: function() {
+      this.$el.removeClass('editing');
     }
   });
 
@@ -46,6 +56,7 @@
     initialize: function() {
       this.registView = this.$('#registView');
       this.inputName = this.$('#name');
+      this.inputAddress = this.$('#address');
       this.listenTo(addresses, 'add', this.addOne);
 //      this.listenTo(addresses, 'all', this.addAll);
       addresses.fetch();
@@ -60,8 +71,8 @@
       this.registView.show();
     },
     addAddress: function() {
-      console.log('addAddress');
-      addresses.create({name: this.inputName.val()});
+      console.log('addAddress' + this.inputAddress.val());
+      addresses.create({name: this.inputName.val(), address: this.inputAddress.val()});
       this.registView.hide();
       this.inputName.val('');
       return false;
