@@ -1,16 +1,23 @@
 
   var Address = Backbone.Model.extend({
     defaults: {
-      "name": ""
+      "name": "",
+      "done": false
     },
     initialize: function() {
       console.log("Address[" + this.cid + "]: " + JSON.stringify(this));
+    },
+    toggle: function() {
+      this.save({done: !this.get("done")});
     }
   });
 
   var AddressList = Backbone.Collection.extend({
     model: Address,
-    localStorage: new Backbone.LocalStorage("address")
+    localStorage: new Backbone.LocalStorage("address"),
+    done: function() {
+      return this.filter(function(address) { return address.get('done')});
+    }
   });
 
   var addresses = new AddressList();
@@ -18,9 +25,19 @@
   var AddressView = Backbone.View.extend({
     tagName: "tr",
     template: _.template($('#addressTemplate').html()),
+    events: {
+      "click .toggle": "toggleDone"
+    },
+    initialize: function() {
+      this.listenTo(this.model, 'destroy', this.remove);
+    },
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
+    },
+    toggleDone: function() {
+      console.log('toggleDone');
+      this.model.toggle();
     }
   });
 
@@ -36,16 +53,17 @@
     events: {
       "click #showRegist": "showRegistView",
       "click #registButton": "addAddress",
+      "click #removeAddress": "removeAddress"
     },
     showRegistView: function() {
       console.log('registView');
       this.registView.show();
-      this.inputName.vale('');
     },
     addAddress: function() {
       console.log('addAddress');
       addresses.create({name: this.inputName.val()});
       this.registView.hide();
+      this.inputName.val('');
       return false;
     },
     addOne: function(address) {
@@ -56,6 +74,10 @@
     addAll: function() {
       console.log('addAll');
       addresses.each(this.addOne, this);
+    },
+    removeAddress: function() {
+      console.log('removeAddress');
+      _.invoke(addresses.done(), 'destroy');
     }
   });
 
